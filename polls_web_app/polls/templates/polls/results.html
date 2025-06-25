@@ -1,0 +1,22 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}Résultats{% endblock %}
+
+
+
+{% block content %}
+
+        
+<h1>{{ question_object.question_text }}</h1>
+
+<ul>
+{% for choice in question_object.choice_set.all %}
+    <li>{{ choice.choice_text }} - {{ choice.votes }}</li>
+    
+{% endfor %}
+</ul>
+
+
+
+
+{% endblock %}
