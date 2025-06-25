@@ -4,8 +4,12 @@ from django.db.models import F
 from .models import Question, Choice
 
 
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
 def index(request):
-    latest_question_list = Question.objects.order_by("-pub_date")[:5]
+    latest_question_list = Question.objects.filter(user=request.user)
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
 

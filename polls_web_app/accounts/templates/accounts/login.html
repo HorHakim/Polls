@@ -1,0 +1,33 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Se connecter</h2>
+    <hr>
+
+    {# Affichage des messages d’erreur ou de succès (ex: invalid username/password) #}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" action="">
+        {% csrf_token %}
+         <div class="mb-3">
+             <label for="id_username" class="form-label">Nom d'utilisateur</label>
+             {{ form.username }}
+         </div>
+         <div class="mb-3">
+             <label for="id_password" class="form-label">Mot de passe</label>
+             {{ form.password }}
+         </div>
+
+
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+    </form>
+</div>
+{% endblock %}
